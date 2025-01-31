@@ -1,0 +1,35 @@
+.notification {
+    position: fixed;
+    top: 50%;
+    z-index: 1;
+
+    width: 50%;
+    height:fit-content;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px orange;
+    background-color: white;
+    white-space: pre-wrap;
+}
+.notification > .header {
+    border-bottom: 2px solid orange;
+    font-weight: bold;
+
+}
+
+.warning {
+    width: 30px;
+    height: auto;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.close {
+    width: 30px;
+    height: auto;
+    float: right;    
+    background-color: tomato;
+}
+.close:hover {
+    background-color: red;
+}
