@@ -75,7 +75,6 @@ btnChange.addEventListener("click", () => {
     if (passwordDataChanged) {
         passwordDataChanged = false;
         for (let i = 0; i < passwordData.length; i++) {
-            passwordData[i].disabled = true;
             passwordData[i].style.border = '1px solid lightgray';
             
         }
@@ -85,7 +84,6 @@ btnChange.addEventListener("click", () => {
     else {
         passwordDataChanged = true;
         for (let i = 0; i < passwordData.length; i++) {
-            passwordData[i].disabled = false;
             passwordData[i].style.border = '1px solid orange';
         }
 
@@ -121,7 +119,7 @@ function isValidForm(data) {
             { rule: value => value === "" || /^\+?\d{1,4}?\s?\(?\d{1,4}\)?\s?\d{4,5}[- ]?\d{4}$/.test(value), message: "Recovery Phone invalid." }
         ],
         birth_date: [
-            { rule: (value) => !isNaN(new Date(value).getTime()), message: "Date invalid." }
+            { rule: (value) => value === "" || !isNaN(new Date(value).getTime()), message: "Date invalid." }
         ],
         description: [
             { rule: value => value.length < 65535, message: "Description too long." }
