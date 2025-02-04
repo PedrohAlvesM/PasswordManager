@@ -57,7 +57,10 @@ With all components installed and both the **web server** and **database** runni
    ```bash
    php artisan migrate
    ```
-
+5. Build client using NPM:
+   ```
+   npm run build
+   ```
 After completing these steps, the application can be accessed via the web server. However, to improve usability, it is recommended to configure a **virtual domain**, making access more intuitive than just `localhost/PasswordManager`.  
 
 If you choose not to configure a virtual domain, remember to update the `APP_URL` variable in the `.env` file.  
