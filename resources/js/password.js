@@ -31,6 +31,8 @@ btnDone.addEventListener("click", async () => {
 
         if (await UpdatePassword(passwords[toUpdate].id_password)) {
             alert(`${passwords[toUpdate].application_name} password updated.`);
+
+            setPasswordChanged(false);
             return true;
         }
         alert(`${passwords[toUpdate].application_name} can't be updated.`);
@@ -58,7 +60,7 @@ const btnDelete = document.getElementById("btn-delete");
 btnDelete.addEventListener('click', async () => {
     const toDelete = SearchInPasswords(search.value);
     if (toDelete === -1) {
-        alert(`${passwords[i].application_name} can't be deleted.`);
+        alert(`Password can't be deleted.`);
         return false;
     }
 
@@ -72,24 +74,29 @@ btnDelete.addEventListener('click', async () => {
 
 const btnChange = document.getElementById("btn-change");
 btnChange.addEventListener("click", () => {
+    setPasswordChanged(!passwordDataChanged);
+});
+
+function setPasswordChanged(value) {
+    if (typeof value !== "boolean") return false;
+    
+    passwordDataChanged = value;
+
     if (passwordDataChanged) {
-        passwordDataChanged = false;
         for (let i = 0; i < passwordData.length; i++) {
-            passwordData[i].style.border = '1px solid lightgray';
-            
+            passwordData[i].classList.add("password-edit");
+            passwordData[i].classList.remove("password-view");
         }
-        
-        btnChange.style.backgroundColor = "#f4f4f4";
+        btnChange.classList.add("password-edit");
     }
     else {
-        passwordDataChanged = true;
         for (let i = 0; i < passwordData.length; i++) {
-            passwordData[i].style.border = '1px solid orange';
+            passwordData[i].classList.add("password-view");
+            passwordData[i].classList.remove("password-edit");
         }
-
-        btnChange.style.backgroundColor = "#d8d8d8";
+        btnChange.classList.remove("password-edit");
     }
-});
+}
 
 function isValidForm(data) {
     const validationRules = {
