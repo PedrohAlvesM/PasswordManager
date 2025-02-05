@@ -1,4 +1,4 @@
-import { ShowNotification } from "./notification.js";
+import { ShowNotificationError, ShowNotificationConfirm, ShowNotificationText } from "./notification.js";
 
 let passwordDataChanged = false;
 let data = sessionStorage.getItem('passwords');
@@ -19,30 +19,30 @@ btnDone.addEventListener("click", async () => {
     const errors = isValidForm(data);
     if (Object.keys(errors).length > 0) {
         const title = passwordDataChanged ? 'Error changing password data' : 'Error creating password';
-        ShowNotification(errors, title);
+        ShowNotificationError(title, errors);
         return false;
     }
     if (passwordDataChanged) {
         const toUpdate = SearchInPasswords(search.value);
         if (toUpdate === -1) {
-            alert(`${passwords[i].application_name} can't be updated.`);
+            ShowNotificationText(`Password was not found`);
             return false;
         }
 
         if (await UpdatePassword(passwords[toUpdate].id_password)) {
-            alert(`${passwords[toUpdate].application_name} password updated.`);
+            ShowNotificationText(`${passwords[toUpdate].application_name} password updated.`);
 
             setPasswordChanged(false);
             return true;
         }
-        alert(`${passwords[toUpdate].application_name} can't be updated.`);
+        ShowNotificationText(`${passwords[toUpdate].application_name} can't be updated.`);
         return false;
     }
     if (await CreatePassword()) {
-        alert("Password created successfully.");
+        ShowNotificationText("Password created successfully.");
         return true;
     }
-    alert("Password can't be created.");
+    ShowNotificationText("Password can't be created.");
     return false;
 });
 
@@ -60,16 +60,19 @@ const btnDelete = document.getElementById("btn-delete");
 btnDelete.addEventListener('click', async () => {
     const toDelete = SearchInPasswords(search.value);
     if (toDelete === -1) {
-        alert(`Password can't be deleted.`);
+        ShowNotificationText(`Password was not found`);
         return false;
     }
-
-    if (await DeletePassword(passwords[toDelete].id_password)) {
-        alert(`${passwords[toDelete].application_name} password deleted.`);
-        return true;
+    if (await ShowNotificationConfirm(`Deleting ${passwords[toDelete].application_name}`)) {
+        if (await DeletePassword(passwords[toDelete].id_password)) {
+            ShowNotificationText(`${passwords[toDelete].application_name} password deleted.`);
+            //remove app from options
+            const parent = document.getElementById("applications");
+            const deletedpassword = parent.querySelector(`option[value='${passwords[toDelete].application_name}']`);
+            parent.removeChild(deletedpassword);
+            return true;
+        } 
     }
-    alert(`${passwords[toDelete].application_name} can't be deleted.`);
-    return false;
 });
 
 const btnChange = document.getElementById("btn-change");
@@ -244,11 +247,6 @@ async function DeletePassword(id_password) {
     if (!response.ok || !msg.success) {
         return false;
     }
-
-    //remove app from options
-    const parent = document.getElementById("applications");
-    const deletedpassword = parent.querySelector(`option[value='${passwords[id_password].application_name}']`);
-    parent.removeChild(deletedpassword);
 
     return true;
 }
