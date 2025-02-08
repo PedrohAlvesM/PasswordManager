@@ -176,6 +176,14 @@ function WritePasswordData(index) {
         const name = element.name;
         if (passwords[index][name] !== undefined) {
             element.value = passwords[index][name];
+            if (name === 'birth_date') {
+                const date = new Date(passwords[index][name]);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                
+                element.value = `${year}-${month}-${day}`;
+            }
         }
     });
 }
