@@ -50,9 +50,12 @@ const btnCopy = document.getElementsByClassName("btn-copy");
 const passwordData = document.getElementsByClassName("password-data");
 for (let i = 0; i < btnCopy.length; i++) {
     btnCopy[i].addEventListener("click", () => {
-        const content = passwordData[i].innerText;
-        navigator.clipboard.writeText(content);
-        alert("Text copied: " + content);
+        const content = passwordData[i].value;
+        navigator.clipboard.writeText(content).then(()=>{
+            ShowNotificationText("Password data copied to clipboard successfully.");
+        }).catch(()=>{
+            ShowNotificationText("Was not possible to copy to clipboard.")
+        })
     })
 }
 

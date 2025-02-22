@@ -37,43 +37,43 @@
             <div class="table-container">
               <div class="table-header">Application Name</div>
               <input class="password-data password-view" type="text" name="application_name" required>
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Password</div>
               <input class="password-data password-view" type="password" name="password" required>
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Username</div>
               <input class="password-data password-view" type="text" name="username">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Email</div>
               <input class="password-data password-view" type="email" name="email">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Recovery Email</div>
               <input class="password-data password-view" type="email" name="recovery_email">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Phone</div>
               <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="phone">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
               
               <div class="table-header">Recovery Phone</div>
               <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="recovery_phone">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Birth Date</div>
               <input class="password-data password-view" type="text" name="birth_date">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Description</div>
               <input class="password-data password-view" type="text" name="description">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
               <div class="table-header">Addtional Info</div>
               <input class="password-data password-view" type="text" name="additional_info">
-              <img class="image" src="{{URL('assets/copy.svg')}}" alt="copy">
+              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
             </div>   
         </main>
 
