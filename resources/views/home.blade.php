@@ -29,6 +29,9 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" minlength="8" required>
                 </div>
+                @if (session('error'))
+                    <p class="error-text"> {{session('error')}} </p>
+                @endif
                 <button class="btn-send">Login</button>
             </form>
             @else 

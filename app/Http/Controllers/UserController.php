@@ -30,8 +30,9 @@ class UserController extends Controller {
 
         if (Auth::attempt(['name'=>$data['name'], 'password'=>$data['password']])) {
             $request->session()->regenerate();
+            return redirect('/password');
         }
-        return redirect('/password');
+        return redirect()->back()->with('error', 'Name or password incorrect.');
     }
 
     public function UserExists() {
