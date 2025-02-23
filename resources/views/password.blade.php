@@ -18,70 +18,62 @@
         let data = @json($passwords);
         sessionStorage.setItem('passwords', JSON.stringify(data));
     </script>
-    @auth    
-        <main class="main-container flex-container shadow">
-            <div class="flex-container search-box">
-                <label for="search">Search your passwords</label> 
-                <input type="text" id="search" list="applications">
-                <datalist id="applications"> 
-                    @foreach ($passwords as $password)
-                        <option value='{{$password->application_name}}'>{{$password->application_name}}</option>
-                    @endforeach
-                </datalist>
-                <div class="actions">
-                    <img id="btn-done" class="image" src="{{URL('assets/done.svg')}}" alt="done">
-                    <img id="btn-change" class="image" src="{{URL('assets/change.svg')}}" alt="change">
-                    <img id="btn-delete" class="image" src="{{URL('assets/delete.svg')}}" alt="delete">
-                </div>
+    <main class="main-container flex-container shadow">
+        <div class="flex-container search-box">
+            <label for="search">Search your passwords</label> 
+            <input type="text" id="search" list="applications">
+            <datalist id="applications"> 
+                @foreach ($passwords as $password)
+                    <option value='{{$password->application_name}}'>{{$password->application_name}}</option>
+                @endforeach
+            </datalist>
+            <div class="actions">
+                <img id="btn-done" class="image" src="{{URL('assets/done.svg')}}" alt="done">
+                <img id="btn-change" class="image" src="{{URL('assets/change.svg')}}" alt="change">
+                <img id="btn-delete" class="image" src="{{URL('assets/delete.svg')}}" alt="delete">
             </div>
-            <div class="table-container">
-              <div class="table-header">Application Name</div>
-              <input class="password-data password-view" type="text" name="application_name" required>
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+        </div>
+        <div class="table-container">
+            <div class="table-header">Application Name</div>
+            <input class="password-data password-view" type="text" name="application_name" required>
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Password</div>
-              <input class="password-data password-view" type="password" name="password" required>
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Password</div>
+            <input class="password-data password-view" type="password" name="password" required>
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Username</div>
-              <input class="password-data password-view" type="text" name="username">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Username</div>
+            <input class="password-data password-view" type="text" name="username">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Email</div>
-              <input class="password-data password-view" type="email" name="email">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Email</div>
+            <input class="password-data password-view" type="email" name="email">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Recovery Email</div>
-              <input class="password-data password-view" type="email" name="recovery_email">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Recovery Email</div>
+            <input class="password-data password-view" type="email" name="recovery_email">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Phone</div>
-              <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="phone">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
-              
-              <div class="table-header">Recovery Phone</div>
-              <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="recovery_phone">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Phone</div>
+            <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="phone">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            
+            <div class="table-header">Recovery Phone</div>
+            <input class="password-data password-view" type="tel" placeholder="+55 (99) 99999-9999" maxlength="20" name="recovery_phone">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Birth Date</div>
-              <input class="password-data password-view" type="text" name="birth_date">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Birth Date</div>
+            <input class="password-data password-view" type="text" name="birth_date">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Description</div>
-              <input class="password-data password-view" type="text" name="description">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+            <div class="table-header">Description</div>
+            <input class="password-data password-view" type="text" name="description">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
 
-              <div class="table-header">Addtional Info</div>
-              <input class="password-data password-view" type="text" name="additional_info">
-              <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
-            </div>   
-        </main>
-
-    @endauth
-
-    @guest
-        <h1>You are not signed in.</h1>
-    @endguest
-
+            <div class="table-header">Addtional Info</div>
+            <input class="password-data password-view" type="text" name="additional_info">
+            <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
+        </div>   
+    </main>
 </body>
 </html>

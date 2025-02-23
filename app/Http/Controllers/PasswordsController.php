@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 class PasswordsController extends Controller
@@ -69,6 +70,7 @@ class PasswordsController extends Controller
         ], Response::HTTP_OK);
     }
     public function GetAllPasswords() {
+        if (!Auth::check()) return redirect('/');
         $passwords = Password::all();
         foreach ($passwords as $p) {
             $p['password'] = Crypt::decryptString($p['password']);
