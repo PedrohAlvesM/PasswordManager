@@ -112,7 +112,6 @@ function isValidForm(data) {
         ],
         password: [
             { rule: value => value.trim() !== "", message: "Password is required." },
-            { rule: value => value.length >= 8, message: "Password must be at least 8 characters long." }
         ],
         username: [
             {
@@ -261,3 +260,57 @@ async function DeletePassword(id_password) {
 
     return true;
 }
+
+async function GenerateBackupFile() {
+    if (await ShowNotificationConfirm('Are You sure to Generate the Backup File?')) {
+        try {
+            const response = await fetch('/password/backup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': CSRF_TOKEN,
+                    'Accept': 'application/json',
+                }
+            });
+
+            const content = await response.blob();
+            if (!response.ok) {
+                switch (response.status) {
+                    case 401:
+                        throw new Error("You must Log In to save the Backup File.");
+                    case 403:
+                        throw new Error("You must Log In to save the Backup File.");
+                    default:
+                        throw new Error("There was an error trying to generate the Backup File");
+                }
+            }   
+            
+            //To the client download the file
+            const url = URL.createObjectURL(content);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `passwords${RandomString(8)}.txt`; 
+            document.body.appendChild(a);
+            a.click();
+            
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+        catch (error) {
+            ShowNotificationText(`${error.message}`);
+        }
+    }
+}
+
+function RandomString(length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let str = '';
+    for (let i = 0; i < length; i++) {
+      const idx = Math.floor(Math.random() * chars.length);
+      str += chars[idx];
+    }
+    return str;
+}
+   
+document.getElementById("backup").addEventListener("click", GenerateBackupFile)

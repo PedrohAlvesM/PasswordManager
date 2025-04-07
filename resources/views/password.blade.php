@@ -75,5 +75,7 @@
             <img class="image btn-copy" src="{{URL('assets/copy.svg')}}" alt="copy">
         </div>   
     </main>
+
+    <button id="backup">Criar Backup</button>
 </body>
 </html>

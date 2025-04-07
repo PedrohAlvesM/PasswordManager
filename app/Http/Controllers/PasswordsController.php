@@ -8,14 +8,15 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PasswordsController extends Controller
 {
     public function RegisterPassword(Request $request) {
         $data = $request->validate([
             'application_name' => 'required|string|max:255',
-            'password'         => 'required|string|min:8',
+            'password'         => 'required|string',
             'username'         => 'nullable|string|max:255',
             'email'            => 'nullable|email|max:255',
             'recovery_email'   => 'nullable|email|max:255',
@@ -100,5 +101,20 @@ class PasswordsController extends Controller
             'success' => true,
             'message' => 'Password deleted successfully.'
         ], Response::HTTP_OK);
+    }
+
+    public function GenerateBackupFile() {
+        $passwords = Password::all();
+        foreach ($passwords as $p) {
+            $p['password'] = Crypt::decryptString($p['password']);
+        }
+
+        $file = "passwords". Str::random() .".txt";
+        
+        Storage::disk('temp')->put($file, $passwords->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        
+        $fullPath = storage_path("app/temp/$file");
+    
+        return response()->download($fullPath)->deleteFileAfterSend(true);
     }
 }

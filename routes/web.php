@@ -14,3 +14,4 @@ Route::post('/register', [UserController::class, 'RegisterPassword']);
 Route::post('/password', [PasswordsController::class, 'RegisterPassword']);
 Route::post('/password/id/{id}', [PasswordsController::class, 'DeletePassword']);
 Route::put('/password/id/{id}', [PasswordsController::class, 'Update']);
+Route::post('/password/backup', [PasswordsController::class, 'GenerateBackupFile']);
