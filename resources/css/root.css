@@ -1,0 +1,10 @@
+:root {
+    --html-bg-color: #f5f5f7;
+    --main-container-color: white;
+    --table-header-color: #f4f4f4;
+    --border-color: #ccc;
+    --image-button-background: linear-gradient(to bottom, var(--html-bg-color), var(--table-header-color));
+
+    --button-border-radius: 8px;
+    --image-size: 40px;
+}

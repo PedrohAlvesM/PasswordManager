@@ -1,13 +1,12 @@
 input {
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-border-radius);
     transition: border-color 0.3s;
     font-size: 0.95rem;
 }
   
 input:focus {
     outline: none;
-    border-color: #0059a3;
-    background-color: #fff;
+    border-color: black;
 }
   

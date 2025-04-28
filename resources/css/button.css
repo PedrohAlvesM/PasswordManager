@@ -1,8 +1,8 @@
 .button {
     padding: 0.6rem 1.2rem;
-    background: linear-gradient(to bottom, #f5f5f7, #f4f4f4);;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background: var(--image-button-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-border-radius);
     color: black;
     font-size: 0.9rem;
     font-weight: bold;

@@ -7,7 +7,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Poppins, Arial;
-    background-color: #f5f5f7;
+    background-color: var(--html-bg-color);
     text-align: center;
 }
 
@@ -26,7 +26,7 @@ html, body {
 .main-container {
     width: 50%;
     height: 90%;
-    background-color: white;
+    background-color: var(--main-container-color);
     border-radius: 15px;
     padding: 15px;
 }
@@ -42,11 +42,11 @@ form > div {
 }
 
 .image {
-    width: 40px;
+    width: var(--image-size);
     height: auto;
     display: block;
-    background: linear-gradient(to bottom, #f5f5f7, #f4f4f4);
-    border-radius: 8px;
+    background: var(--image-button-background);
+    border-radius: var(--button-border-radius);
     transition: transform 0.2s ease;
 }
 .image:hover {

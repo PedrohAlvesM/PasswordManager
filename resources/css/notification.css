@@ -20,7 +20,7 @@
 .content > .btn-confirm, .content > .btn-cancel {
     width: 25%;
     height: 25px;
-    background-color: #f4f4f4;
+    background-color:var(--table-header-color);
     margin: 5px;
 }
 
