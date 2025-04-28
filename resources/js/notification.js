@@ -62,14 +62,14 @@ export async function ShowNotificationConfirm(title) {
         const btnCancel = document.createElement("button");
     
         btnConfirm.textContent = "Confirm";
-        btnConfirm.classList.add("btn-confirm");
+        btnConfirm.classList.add("btn-confirm", "button");
         btnConfirm.addEventListener("click", ()=>{
             resolve(true);
             notification.remove();
         });
     
         btnCancel.textContent = "Cancel";
-        btnCancel.classList.add("btn-cancel");
+        btnCancel.classList.add("btn-cancel", "button");
         btnCancel.addEventListener("click", ()=>{
             resolve(false);
             notification.remove();

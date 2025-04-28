@@ -7,7 +7,7 @@
         <title>Personal Password Manager</title>
 
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/button.css', 'resources/css/input.css', 'resources/js/app.js'])
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
                 @if (session('error'))
                     <p class="error-text"> {{session('error')}} </p>
                 @endif
-                <button class="btn-send">Login</button>
+                <button class="button btn-send shadow">Login</button>
             </form>
             @else 
                 <form action="/register" method="POST" class="flex-container main-container">
@@ -46,7 +46,7 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" minlength="8" required>
                     </div>
-                    <button class="btn-send">Save your password</button>
+                    <button class="button btn-send shadow">Save your password</button>
                 </form>
             @endif
 

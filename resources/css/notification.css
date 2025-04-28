@@ -24,13 +24,6 @@
     margin: 5px;
 }
 
-.btn-confirm:hover {
-    background-color: #e5e5e5;
-}
-.btn-cancel:hover {
-    background-color: #e5e5e5;
-}
-
 .warning {
     width: 30px;
     height: auto;
